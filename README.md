@@ -1,11 +1,11 @@
 
-# medical_concept_extraction
+# Medical Concept Extraction
 A method for language-agnostic human-in-the-loop medical concept extraction from highly unstructured electronic health records.
 
 ## Usage
 Works best in an interactive session.
 
-**Loading records**
+**Loading records**  
 Load your text files into record objects using the helper classes in `data_utils`:
 
     records = Records()
@@ -15,7 +15,7 @@ Load your text files into record objects using the helper classes in `data_utils
     # optionally save the tokenized records as a pickle file
     records.save()  # load with Records.load
 
-**Initial curation**
+**Initial curation**  
 Add your bootstrap lexicon to the data folder as a newline separated `lexicon.txt` file.
 `AnnotationGUI` starts a GUI where you can annotate tokens with right mouse button.
 You can use `extraction.extract_all` to pre-annotate the records using your bootstrap lexicon.
@@ -37,7 +37,7 @@ Remove with:
 Or mark as ambiguous:
 `mark_ambiguous(lexicon, fps[0][0])`
 
-**Review candidates**
+**Review candidates**  
 
     cdf = CandidateFinder(records, lexicon)  
     cdf.extend_fuzzy()  # find fuzzy matches
@@ -52,7 +52,7 @@ Then later load with:
     cdf = CandidateFinder(records)
     cdf.load_all()
 
-**Exctract matches**
+**Exctract matches**  
 Annotate using `extraction.extract_all` with the saved partial match statistics.
 
     # tags are saved in Record.tags
