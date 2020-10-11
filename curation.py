@@ -1,4 +1,4 @@
-from data_utils import get_wd, LexiconEntry
+from data_utils import get_wd, LexiconEntry, Tag
 import pickle
 from extraction import extract_all
 
@@ -53,6 +53,10 @@ def get_false_positives(records, lexicon, pos_counter=None, pos_counter_m=None, 
                     fps.append((record.tokens[l][p], record.id, (l, p), record.tokens[l][p-3:p+4]))
 
     return fps
+
+
+def mark_ambiguous(lexicon, entry):
+    lexicon[entry].class_ = Tag.AMB
 
 
 def get_tags(path=get_wd() + '/data/annotated.pickle'):
