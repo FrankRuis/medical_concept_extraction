@@ -52,9 +52,20 @@ Then later load with:
     cdf = CandidateFinder(records)
     cdf.load_all()
 
-**Exctract matches**  
+**Extract matches**  
 Annotate using `extraction.extract_all` with the saved partial match statistics.
 
     # tags are saved in Record.tags
     extract_all(records, lexicon, cdf.pos_counter, cdf.pos_counter_m)
+  
+## Citations  
+As published in the ICDM 2020 DMBIH workshop:
+
+    @InProceedings{Ruis2020,
+      author    = {Frank Ruis and Shreyasi Pathak and Jeroen Geerdink and Johannes H. Hegeman and Christin Seifert and Maurice van Keulen},
+      booktitle = {Proc. International Conference on Data Mining Workshops},
+      title     = {Human-in-the-loop Language-agnostic Extraction of Medication Data from Highly Unstructured Electronic Health Records},
+      year      = {2020},
+      publisher = {{IEEE}},
+    }
 
