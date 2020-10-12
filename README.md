@@ -60,12 +60,12 @@ Annotate using `extraction.extract_all` with the saved partial match statistics.
   
 ## Citations  
 As published in the ICDM 2020 DMBIH workshop:
-
-    @InProceedings{Ruis2020,
-      author    = {Frank Ruis and Shreyasi Pathak and Jeroen Geerdink and Johannes H. Hegeman and Christin Seifert and Maurice van Keulen},
-      booktitle = {Proc. International Conference on Data Mining Workshops},
-      title     = {Human-in-the-loop Language-agnostic Extraction of Medication Data from Highly Unstructured Electronic Health Records},
-      year      = {2020},
-      publisher = {{IEEE}},
-    }
-
+```bibtex
+@InProceedings{Ruis2020,
+  author    = {Frank Ruis and Shreyasi Pathak and Jeroen Geerdink and Johannes H. Hegeman and Christin Seifert and Maurice van Keulen},
+  booktitle = {Proc. International Conference on Data Mining Workshops},
+  title     = {Human-in-the-loop Language-agnostic Extraction of Medication Data from Highly Unstructured Electronic Health Records},
+  year      = {2020},
+  publisher = {{IEEE}},
+}
+```
