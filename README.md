@@ -3,7 +3,8 @@
 A method for language-agnostic human-in-the-loop medical concept extraction from highly unstructured electronic health records.
 
 ## Usage
-Works best in an interactive session.
+Works best in an interactive session.  
+See `demo.ipynb` for a Jupyter Notebook demo with 3 simple example files.
 
 **Loading records**  
 Load your text files into record objects using the helper classes in `data_utils`:
