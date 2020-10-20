@@ -13,7 +13,7 @@ class AnnotationGUI:
         :param records: list of records to annotate
         :param filter_: optional list of record ids to ignore (e.g. if they have already been annotated)
         """
-        self.records = [r for r in records if r.id not in filter_] if filter_ else records
+        self.records = [r for r in records.copy() if r.id not in filter_] if filter_ else records.copy()
         self.cur = None
         self.ttt = {}
         self.annotated = {}
@@ -45,6 +45,8 @@ class AnnotationGUI:
 
     def _next_record(self, event=None):
         self.text.delete('1.0', tk.END)
+        if len(self.records) == 0:
+            return
         self.cur = choice(self.records)
         self.records.remove(self.cur)
         self.ttt.clear()

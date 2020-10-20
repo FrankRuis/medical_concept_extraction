@@ -1,0 +1,2 @@
+This is an example record.
+Our target word is: calci chew d3, in this document.

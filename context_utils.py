@@ -83,7 +83,7 @@ class CandidateFinder:
         # also filter if the context exclusively surrounds known lexicon entries
         filtered_contexts = {c: contexts[c] for c in contexts if
                              c in gc and contexts[c] / gc[c] > thresh and contexts[c] != gc[c] and contexts[
-                                 c] > min_count}
+                                 c] >= min_count}
 
         # calculate position statistics for partial match score
         pos_counter = Counter()
@@ -143,13 +143,13 @@ class CandidateFinder:
 
         return candidates
 
-    def extend_fuzzy(self) -> None:
+    def extend_fuzzy(self, thresh=0.85, pmi_thresh=7, multi_thresh=0.85, n=2) -> None:
         """
         Extend the lexicon with new fuzzy matches.
         """
         lexicon_entries = [' '.join(e) for e in self.lexicon.keys()]
-        matches = get_fuzzy_matches(self.words, lexicon_entries)
-        matches += get_fuzzy_matches_multi(self.records, self.lexicon, self.pmi)
+        matches = get_fuzzy_matches(self.words, lexicon_entries, n=2, lower_bound=thresh)
+        matches += get_fuzzy_matches_multi(self.records, self.lexicon, self.pmi, pmi_bound=pmi_thresh, n=2, lower_bound=multi_thresh)
         for match, entry, val in matches:
             new = tuple(match.split())
             if new not in self.lexicon:
@@ -166,7 +166,7 @@ class CandidateFinder:
         :param n: maximum number of candidates to review
         """
         if not candidates:
-            candidates = self.candidates[:n]
+            candidates = [c[0] for c in self.candidates[:n]]
         gui = ReviewGUI(candidates, self.rejected, steps=steps)
         self.rejected = gui.rejects
         self.candidates = self.candidates[n:]

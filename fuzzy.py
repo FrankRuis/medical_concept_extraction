@@ -92,6 +92,9 @@ def get_fuzzy_matches_multi(records, lexicon, pmi, n=2, pmi_bound=7, lower_bound
 
     words = list({t[0] for r in records for t in double_tokens[r.id]})
     lexicon_entries = [' '.join(e) for e in lexicon.keys() if len(e) > 1]
+    if not words or not lexicon_entries:
+        return []
+	
     matches = get_fuzzy_matches(words, lexicon_entries, n=n, lower_bound=lower_bound)
 
     words = list({t for r in records for t in triple_tokens[r.id]})
